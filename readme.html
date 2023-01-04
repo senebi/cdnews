@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html lang="hu">
+<head>
+	<title>Readme a Chuushin dojo news-hoz</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+	<style type="text/css">
+		body{
+			margin: 0.5rem 1rem;
+		}
+		li li{
+			list-style-type: none;
+		}
+	</style>
+</head>
+<body>
+	<h2>Segédlet a Chuushin dojo news használatához</h2>
+	<hr />
+	<div class="container">
+	<h3>Tartalom</h3>
+	<ol>
+		<li><a href="#1">Kezdeti lépések</a></li>
+		<li>
+			<a href="#2">Telepítés</a>
+			<ol>
+				<li>2.1. <a href="#2.1">Alapadatok megadása</a></li>
+				<li>2.2. <a href="#2.2">A program műveletei telepítés során</a></li>
+			</ol>
+		</li>
+		<li><a href="#3">Tesztelés</a></li>
+		<li><a href="#4">Használatba vétel</a></li>
+		<li><a href="#5">További tudnivalók, visszajelzés</a></li>
+	</ol>
+	<h3><a name="1">1. Kezdeti lépések</a></h3>
+	<p>Mielőtt a telepítést elkezdjük, a teljes tömörített fájlt (amiben ez a readme is van)
+	ki kell csomagolnunk abba a mappába, amiben majd véglegesen használni szeretnénk.</p>
+	<p>Ez teszt fázisban kinézhet például így, helyi mappaszerkezetben: <i>(...)/Xampp/htdocs/cel/mappa/cdnews</i>.<br />
+	Ezt böngészőből így érjük el: <i>localhost/cel/mappa/cdnews</i></p>
+	<p>Élesben pl. <i>chuushindojo.hu/cel/mappa/cdnews</i>.</p>
+	
+	<h3><a name="2">2. Telepítés</a></h3>
+	<h4><a name="2.1">2.1. Alapadatok megadása</a></h4>
+	<p>
+		A telepítés pofonegyszerű. Be kell írni a böngészőbe az elérési utat, pl.: <i>localhost/cel/mappa/cdnews</i>,
+		és máris láthatók az első kérdések, a telepítés előtt beállítható paraméterek.
+	</p>
+	<p>
+		Az elején a legfontosabb adatokat kell megadnunk:
+	</p>
+		<ul>
+			<li>szerver (host) név</li>
+			<li>adatbázis felhasználónév</li>
+			<li>adatbázis jelszó</li>
+			<li>adatbázis neve</li>
+		</ul>
+	<p>
+		<b>Fontos!</b> A teszt adatok később csak a <i>cdnews</i> adatbázisba importálhatók be!<br />
+		Ha átírod az adatbázis nevét, akkor <b>annak megfelelően kell átírni</b> később az importálandó SQL fájlban is,
+		különben hibát dob!
+	</p>
+	<p>
+		Aztán jönnek az egyéb felhasználói adatok, mint az adatbázis táblanév előtag (prefix), ami alapértelmezésként <i>cdn_</i>,
+		valamint az ún. admin felhasználónév, ami az első használathoz kell (később is használható).
+	</p>
+	<p>
+		A telepítés gombra kattintva elindul a telepítő
+	</p>
+	<h4><a name="2.2">2.2. A program műveletei telepítés során</a></h4>
+	<p>
+		A telepítés kezdőképernyőjén megadott adatokat először beírja a program a <a href="config.ini"><i>config.ini</i></a> config fájlba, ami később
+		bármikor szerkeszthető.<br />
+		<b>Fontos!</b> A <i>config_default.ini</i> tartalmazza az alapértelmezett beállításokat, ezekhez <b>nem szabad nyúlni</b>!
+		Probléma esetén az ebben szereplő beállítások a mérvadók.
+	</p>
+	<p>A további műveletek:</p>
+	<ol>
+		<li>adatbázis és a táblák létrehozása (ha még nem léteznek)</li>
+		<li>"admin" felhasználó és az alapértelmezett bejegyzés kategóriák beírása</li>
+		<li>indexek létrehozása a gyorsabb keresés érdekében</li>
+		<li>mappastruktúra létrehozása a képek tárolásához (<i>/images</i>)</li>
+		<li>alapértelmezett kép (ha nincs a bejegyzésben kép) bemásolása, jogosultságok beállítása</li>
+	</ol>
+	<p>
+		A telepítés befejeztével generál a program egy <b>titkos</b> mappanevet, amire át kell nevezni a <i>cdnews</i> mappát.<br />
+		Innentől kezdve ezzel a névvel kell hivatkozni rá, hogy az esetlegesen már jelszó nélkül létrehozott felhasználók nevében <b>ne tudjanak idegenek</b> bűvészkedni az oldalon.
+	</p>
+	<p>Végül egy link segítségével visszatérhetünk a kezdőlapra és megkezdhetjük a munkát.</p>
+	
+	<h3><a name="3">3. Tesztelés</a></h3>
+	<p>
+		Teszteléshez használhatunk előre definiált teszt adatokat.
+		Képek a <i><a href="sample_images.rar">sample_images.rar</a></i> tömörített fájlban vannak,
+		teszt bejegyzések pedig a <i><a href="test.mysqldata/cdnews.sql">cdnews.sql</a></i> fájlban.<br />
+		A teszt képeket a projekt <i>/images</i> mappájába kell másolni (ami legkésőbb a telepítés során létrejött).
+	</p>
+	<p>
+		<b>Fontos!</b> Az adatbázisnak (amely neve megegyezik az sql fájlban szereplő névvel) léteznie kell, mielőtt a teszt
+		adatok importálását elkezdjük! Ezen kívül - mivel telepítés során létrejöttek a táblák - törölni kell az összes táblát az adatbázisból.<br />
+		Ezt úgy tudjuk megtenni, hogy a böngészőbe beírva, a <i>localhost/phpmyadmin</i> oldalon kiválasztjuk egyenként az összes táblát és külön-külön rányomunk fönt a <i>Műveletek</i>
+		gombra, majd ott, az oldal alján a <i>Tábla törlése (DROP)</i> lehetőséget választjuk.
+	</p>
+	<p>
+		Kiválasztjuk a <i>cdnews</i> adatbázist, ha nem az van kiválasztva, 
+		és fönt az <i>Importálás</i> gombra kattintunk, ahogy az az alábbi képen látható:
+		<img src="readme_docs/tesztadat_importalas.png" title="Tesztadat importáláshoz" alt="Adatbázis kiválasztása tesztadat importáláshoz" />
+	</p>
+	<p>
+		Ezt követően az <i>Importálás</i> menüben kitallózzuk az sql fájlt (<i><a href="test.mysqldata/cdnews.sql">test.mysqldata/cdnews.sql</a></i>),
+		majd ellenőrizzük, hogy a formátum SQL-re van-e állítva.<br />
+		Ha mindent rendben találunk, akkor az <i>Indítás</i> gombbal tudjuk kezdeményezni az importálást.
+		<img src="readme_docs/importalas_beallitasok.png" title="Importálás beállításai" alt="Tesztadat importálás beállításai" />
+	</p>
+	<h3><a name="4">4. Használatba vétel</a></h3>
+	<p>
+		A <i>Felhasználók</i> menüpontban van lehetőség ellenőrizni, hogy van-e jelszóval nem rendelkező felhasználó.
+		Ha nincs, hozzá lehet adni, ha van, akkor egyet kiválasztva hozzá lehet adni jelszót, ezzel saját tulajdonúvá lehet tenni a fiókot.
+		<br /><b>Fontos!</b> Csak a saját használatra szánt felhasználónévhez adjunk jelszót (ha még nincs), hiszen máskülönben más már nem tudná használni!
+	</p>
+	<p>
+		Bejegyzéseket megtekinteni mindenkinek lehetősége van "regisztráció" nélkül, de a további funkciók felhasználói fiókhoz kötöttek,
+		azokat a menüpontok elnevezése alapján, értelemszerűen lehet használni.
+	</p>
+	<h3><a name="5">5. További tudnivalók, visszajelzés</a></h3>
+	<p>
+		Hiba, észrevétel esetén a következő e-mail címen vagyok elérhető: <a href="mailto:szebenyi.beno@gmail.com">szebenyi.beno@gmail.com</a>.<br />
+		<br />Sok sikert kívánok az oldal használatához!
+	</p>
+	</div>
+</body>
+</html>
