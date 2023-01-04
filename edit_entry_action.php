@@ -1,6 +1,5 @@
 ﻿<?php
 	require("header.php");
-	require("classes/entry.class.php");
 	
 	if(!isset($_POST["btn_update_entry"])){
 		$location="add_entry_form.php";
