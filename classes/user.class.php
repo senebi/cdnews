@@ -36,7 +36,7 @@ class user{
 		}
 		else $this->message=$_SESSION["message"];
 		
-		if(!$this->loggedIn) $this->setMessage("Vendégként böngésszük az oldalt.");
+		if(!$this->loggedIn) $this->setMessage("<p>Vendégként böngésszük az oldalt.</p>");
 		else $this->setMessage("Bejelentkezve: ".$this->userName);
 		
 		//megnézzük, hogy érkeztek-e bejelentkezési adatok

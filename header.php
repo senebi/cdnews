@@ -32,7 +32,7 @@
 		<li><a href="index.php">Kezdőlap</a></li>
 		<li><a href="users.php">Felhasználók</a></li>
 		<li><a href="list_entries.php">Bejegyzések</a></li>
-		<!--<li><a href="teszt.php">Teszt</a></li>-->
+		<!--<li><a href="teszt.php" class="needsconfirm">Teszt</a></li>-->
 	<?php
 		if(!$user->isLoggedIn()){
 	?>
@@ -46,8 +46,8 @@
 		}
 	if($mydb->checkIfExists()){
 ?>
-	<!-- Teszteléshez megjegyzésbe tesszük, nehogy véletlen rákattintson valaki és elölről kelljen kezdeni a telepítést! -->
-	<li><a href="uninstall.php">Eltávolítás</a></li>
+		<!-- Teszteléshez megjegyzésbe tesszük, nehogy véletlen rákattintson valaki és elölről kelljen kezdeni a telepítést! -->
+		<li><a href="uninstall.php" class="needsconfirm">Eltávolítás</a></li>
 <?php
 	}
 ?>

@@ -3,7 +3,7 @@
 ?>
 <h2>Felhasználók</h2>
 <?php
-	echo $user->getMessage()."<br />";
+	echo $user->getMessage();
 	if($user->isLoggedIn()){
 ?>
 		<a href="add_user_form.php">Felhasználó hozzáadása</a>
