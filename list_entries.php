@@ -42,7 +42,7 @@
 	?>
 		<!-- Fb megosztás gomb megjelenítése -->
 		<!-- Figyelem! Be van égetve az egyik paraméterbe a megosztani kívánt URL! -->
-		<div class="fb-share-button" data-href="<?php echo $urlToShare; ?>" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2Flocalhost%2Fcdnews%2Flist_entries.php%3Fid%3D8&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Megosztás</a></div>
+		<div class="fb-share-button" data-href="<?php echo $urlToShare; ?>" data-layout="button" data-size="large"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.chuushindojo.hu%2Ffrontend%2Fpages%2Fblog.php%3Fid%3D<?php echo $_GET["id"]; ?>&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">Megosztás</a></div>
 		<p><a href="<?php echo $_SERVER["PHP_SELF"]; ?>"><-- vissza</a></p>
 	<?php
 	}
