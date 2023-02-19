@@ -70,7 +70,7 @@ class category{
 					if($joinRes){
 						if($joinRes->num_rows>0){
 							if($joinRow=$joinRes->fetch_assoc())
-								$selectedCategoryId=$joinRow["id"];
+								$selectedCategoryId=$joinRow["k.id"];
 						}
 					}
 				}

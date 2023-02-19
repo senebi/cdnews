@@ -1,2 +1,2 @@
 ﻿Chuushin dojo news
-Program version: v1.3.3
+Program version: v1.3.4
